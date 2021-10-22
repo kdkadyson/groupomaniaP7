@@ -1,22 +1,29 @@
-<!-- BASE FORM -->
-
+<!-- => REUSABLE /FLEXIBLE INPUTS -->
 <template>
 
-<label if="label">{{ label }}</label>
-    <input
-        v-bind="$attrs"
-        :placeholder="label"
-    ><!-- input listener -->
+ <label>{{ label }}</label>
+    <input 
+      :placeholder="label"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $comment.target.value)"
+    > <!-- EventListener for update -->
 
 </template>
 
+
 <script>
+
 export default {
   props: {
     label: {
-      type: String,
-      default: ""
+        type: String,
+        default: ''
     },
+    modelValue: {
+      type: [String, Number],
+      default: ''
+    }
   }
 }
+
 </script>

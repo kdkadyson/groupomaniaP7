@@ -2,7 +2,7 @@
 
   <router-link class="comment-link" :to="{name: 'CommentDetails', params: {id: comment.id} }">
     <div class="comment-card">
-      <span>A {{ comment.heure }}  le  {{ comment.date }}</span>
+      <span>A {{ comment.time }}  le  {{ comment.date }}</span>
         <p> {{ comment.photo }} {{ comment.name }}</p>
         <p> {{ comment.img }}</p>
         <h2> {{ comment.title }}</h2>

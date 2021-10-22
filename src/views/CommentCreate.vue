@@ -21,6 +21,7 @@
       v-model="comment.title"
       label="Titre"
       type="text" 
+      
     />
 
     <BaseInput
@@ -35,6 +36,7 @@
       v-model="comment.img"
       label="Image"
       type="text"
+      
     />
 
     <button type="submit">Envoyer</button>
