@@ -1,12 +1,17 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <img src="./assets/logos/icon-above-font.png" alt=" logo" />
+  <div id="app">
+    <Accueil/>
+    <router-view/>
   </div>
-  <router-view/>
+  
+  <footer>
+    <p> FOOTER </p>
+  </footer>
 </template>
 
 <style lang="scss">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,16 +20,31 @@
   color: #2c3e50;
 }
 
+img {
+  width: 70%;
+  height: 25rem;
+}
+
 #nav {
   padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+h1,h2,p {
+  color: #000;
+}
+p {
+  font-size: 30px;
+}
+
+footer{
+  margin-top: 80px;
+}
+
 </style>
