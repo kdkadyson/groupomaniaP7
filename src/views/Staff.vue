@@ -7,11 +7,12 @@
         <router-link to="/comments">Comments</router-link>
         <router-link to="/profile">Profile</router-link>
       </div>
-    <router-view/>
+      <router-view/>
   </div>
 
   <div class="staff">
-    <h1> LES COLLÈGUES </h1>
+    <h1> LES COLLÈGUES</h1>
+    
   </div>
 
 </template>

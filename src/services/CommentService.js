@@ -18,6 +18,6 @@ export default {//Exporte méthode getComments
       return apiClient.get("/comments/" + id)
     },
     postComment(comment) { // new post request
-      return apiClient.post("/comments", comment)
+    return apiClient.post("/comments", comment)
   }
 };

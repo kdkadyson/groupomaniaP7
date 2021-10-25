@@ -32,7 +32,7 @@ const routes = [
     component: CommentList
   },
   {
-    path: "/comment/:id",// : => dynamic => passed in component as props
+    path: "/comment/:id",// : => dynamic => passed in component as props)
     name: "CommentDetails",
     props: true,
     component: CommentDetails

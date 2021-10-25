@@ -29,7 +29,8 @@ export default {
     CommentCard
   },
   created() {//hook => Fetch new comment => Add to Vuex state
-     this.$store.dispatch("fetchComments")
+     this.$store
+      .dispatch("fetchComments")
       .catch(error => {
         this.$router.push({
             name: "ErrorDisplay",

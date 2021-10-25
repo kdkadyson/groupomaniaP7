@@ -8,7 +8,9 @@
   <footer>
     <p> FOOTER </p>
   </footer>
+
 </template>
+
 
 <style lang="scss">
 

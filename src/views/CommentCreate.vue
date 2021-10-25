@@ -5,41 +5,44 @@
 <div class="form-container">
 
   <form @submit.prevent="onSubmit">
-    <label>Category: </label>
-    <select v-model="comment.category">
-      <option
-        v-for="option in categories"
-        :value="option"
-        :key="option"
-        :selected="option === comment.category"
-      >{{ option }}</option>
-    </select>
+
+    <label>Categories</label>
+      <select v-model="comment.category">
+        <option
+          v-for="option in categories"
+          :value="option"
+          :key="option"
+          :selected="option === comment.category"
+        >{{ option }}</option>
+      </select>
 
     <h3>Titre & Commentaire</h3>
 
-    <BaseInput
-      v-model="comment.title"
-      label="Titre"
-      type="text" 
-      
-    />
+    <label>Titre</label>
+      <input
+        v-model="comment.title"
+        type="text"
+        placeholder="Titre"
+      >
 
-    <BaseInput
+    <label>Description</label>
+    <input
       v-model="comment.description"
-      label="Description"
       type="text"
+      placeholder="Description"
     />
 
     <h3>Ajouter une image ?</h3>
 
-    <BaseInput
-      v-model="comment.img"
-      label="Image"
-      type="text"
-      
+    <label>Image</label>
+        <input
+          v-model="comment.img"
+          type="text"
+          placeholder="Image"
     />
 
     <button type="submit">Envoyer</button>
+          
   </form>
 
 </div>
@@ -85,19 +88,19 @@ export default {
             id: uuidv4(),
             name: this.$store.state.user
         }
-       this.$store.dispatch("createComment", comment)//add to Vuex state
-       .then( () => {
-        this.$router.push({//return to CommentList Page on (new) created
-          name: 'CommentDetails',
-          params: { id: comment.id }
+        this.$store.dispatch("createComment", comment)//add to Vuex state
+        .then( () => {
+          this.$router.push({//return to CommentList Page on (new) created
+            name: 'CommentDetails',
+            params: { id: comment.id }
+          })
         })
-      })
-      .catch(error => {
-        this.$router.push({
-            name: "ErrorDisplay",
-            params: { error: error }//props
+        .catch(error => {
+          this.$router.push({
+              name: "ErrorDisplay",
+              params: { error: error }//props
+          })
         })
-      })
     }
   }
 }

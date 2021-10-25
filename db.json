@@ -1,6 +1,13 @@
 {
-  "comments": [
+  "posts": [
     {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+   {
       "id": 123,
       "category": "animaux",
       "name": "name",
@@ -87,39 +94,16 @@
       "description": "Pour la santé !!!",
       "date": "",
       "time": ""
-    },
-    {
-      "id": "4b2399ce-65aa-41e1-a23b-a753a4b35009",
-      "category": "sustainability",
-      "name": "Kady",
-      "photo": "",
-      "title": "fjfjffjjf",
-      "img": "img",
-      "description": "skdjf",
-      "date": "",
-      "time": ""
-    },
-    {
-      "id": "5df68be6-e6a5-49f5-a408-87ed14ea72dc",
-      "category": "nature",
-      "name": "Kady",
-      "photo": "",
-      "title": "date",
-      "img": "img",
-      "description": "demain",
-      "date": "",
-      "time": ""
-    },
-    {
-      "id": "f8f511a0-e9c3-4f2c-b97b-f83f13bf6b09",
-      "category": "",
-      "name": "Kady",
-      "photo": "",
-      "title": "",
-      "img": "",
-      "description": "",
-      "date": "",
-      "time": ""
     }
-  ]
+  ],
+  "user": [
+    {
+    "name": "John Smith",
+    "email": "john@gmail.com",
+    "password": "pass123"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
