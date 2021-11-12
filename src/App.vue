@@ -1,5 +1,6 @@
 <template>
   <img src="./assets/logos/icon-above-font.png" alt=" logo" />
+  <button type="button" class="logoutButton" @click="logout">Logout</button>
   <div id="app">
     <Accueil/>
     <router-view/>
@@ -10,6 +11,19 @@
   </footer>
 
 </template>
+
+
+<script>
+
+export default {
+  methods:{
+    logout(){
+      this.$store.dispatch("logout")
+    }
+  }
+}
+
+</script>
 
 
 <style lang="scss">

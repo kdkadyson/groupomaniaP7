@@ -10,6 +10,7 @@ import Profile from "@/views/Profile.vue"
 import Staff from "@/views/Staff.vue"
 import ErrorDisplay from '@/views/ErrorDisplay.vue'
 
+
 const routes = [
  {
     path: "/",
@@ -29,7 +30,8 @@ const routes = [
   {
     path: "/comments",
     name: "CommentList",
-    component: CommentList
+    component: CommentList,
+    meta: {requiresAuth : true}//add custom attributes to route
   },
   {
     path: "/comment/:id",// : => dynamic => passed in component as props)
@@ -73,6 +75,15 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem("user")
+
+  if(to.matched.some(record => record.meta.requiresAuth) && !loggedIn){
+    next("/")
+  }
+  next()//continues navigation
 })
 
 export default router

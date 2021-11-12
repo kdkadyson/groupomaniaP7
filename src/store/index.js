@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
+import UserService from "@/services/UserService.js";
 import CommentService from "@/services/CommentService.js";
-import axios from "axios";
+
 
 
 export default createStore({
@@ -11,12 +12,17 @@ export default createStore({
   },
 
   mutations: {//Update states => commit to store
-    SET_USER_DATA(state, userData) {
+    SET_USER_DATA(state, userData){
+      state.user = userData
       localStorage.setItem("user", JSON.stringify(userData))
-      axios.defaults.headers.common['Authorization'] = `Bearer ${
+      axios.defaults.headers["Authorization"] = `Bearer ${
         userData.token
       }`
-      state.user = userData 
+    },
+
+    CLEAR_USER_DATA(){
+      localStorage.removeItem("user")
+      location.reload()
     },
 
     ADD_COMMENT(state, comment) { // first mutation
@@ -33,24 +39,29 @@ export default createStore({
   },
 
   actions: {//Before mutation
-    signin({ commit }, credentials) {
-      return axios
-        .post("//localhost:3000/signin", credentials)
-        .then(({ data }) => {
-          commit("SET_USER_DATA", data)
+    signin({ commit }, credentials){
+      UserService.postSignin(credentials)
+      .then(({ data }) => {
+        commit("SET_USER_DATA", data)
         })
-        .catch(error => {
+      .catch(error => {
         throw(error)
       })
     },
 
-    login ({ commit }, credentials) {
-      return axios
-        .post("//localhost:3000/login", credentials)
-        .then(({ data }) => {
-          commit('SET_USER_DATA', data)
+    login({ commit }, credentials){
+      UserService.postLogin(credentials)
+      .then(({ data }) => {
+        commit("SET_USER_DATA", data)
         })
-      },
+      .catch(error => {
+          throw(error)
+      })
+    },
+
+    logout({ commit }){
+      commit("CLEAR_USER_DATA")
+    },
 
     createComment({ commit }, comment) {
       CommentService.postComment(comment)

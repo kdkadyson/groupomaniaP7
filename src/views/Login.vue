@@ -40,8 +40,7 @@
 
 
 <script>
-
-export default {
+export default{
   data () {
     return {
       email: '',
@@ -50,14 +49,13 @@ export default {
   },
   methods: {
     login () {
-      this.$store
-        .dispatch("login", {
-          email: this.email,
-          password: this.password
-        })
-        .then(() => {
-          this.$router.push({ name: "comments" }) 
-        })
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      })
+      .then( () =>{
+        this.$router.push({ name: "CommentList" })
+      })
     }
   }
 }

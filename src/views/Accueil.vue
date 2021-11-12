@@ -1,6 +1,5 @@
 <template>
 
-    <div id="app">
       <div id="nav">
         <router-link :to="{ name: 'Login' }">Login</router-link> 
         <router-link :to="{ name: 'Signin' }">Signin</router-link>
@@ -10,7 +9,6 @@
         <router-link :to="{ name: 'Profile' }">Profile</router-link>
         <router-link :to="{ name: 'Staff' }">Staff</router-link>
       </div> 
-    </div>
 
     <div class="accueil">
     <AccueilMessage/>
@@ -39,16 +37,12 @@ img {
   height: 25rem;
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
 #nav {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  padding: 0.2em 1em;
+  background: linear-gradient(to right, #16c0b0, #84cf6a);
 }
 #nav a {
   font-weight: bold;
@@ -60,4 +54,19 @@ img {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.button {
+  margin-left: auto;
+  background: white;
+  text-decoration: none;
+  color: #2c3e50;
+}
+.logoutButton {
+  cursor: pointer;
+}
+button {
+  margin-left: 0;
+}
+
+
 </style>

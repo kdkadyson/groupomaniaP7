@@ -4,7 +4,7 @@
       <router-link to="/">Accueil</router-link> |
       <router-link to="/Login">Login</router-link>   
     </div>
-  <router-view/>
+    <router-view/>
 
   <div class="signin">
     <h1> SIGNIN </h1>
@@ -49,29 +49,28 @@
 
 <script>
 
-export default {
- 
-  data() {
+export default{
+  data () {
     return {
-      name:"",
-      email: "",
-      password: ""
+      name: '',
+      email: '',
+      password: ''
     }
   },
   methods: {
     signin () {
-      this.$store
-        .dispatch("signin", {
-          name: this.name,
-          email: this.email,
-          password: this.password
-        })
-        .then(() => {
-          this.$router.push({ name: "comments" })
-        })
+      this.$store.dispatch("signin", {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      })
+      .then( () =>{
+        this.$router.push({ name: "CommentList" })
+      })
     }
   }
-
 }
+
+
 
 </script>
