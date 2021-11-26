@@ -11,9 +11,7 @@ exports.create = (req, res) => {
         category: req.body.category,
         title: req.body.title,
         img: req.body.img,
-        description: req.body.description,
-        dateTime: req.body.dateTime,
-        
+        description: req.body.description,   
     });
     Comment.create(comment, (err, data) =>{
         if(err)

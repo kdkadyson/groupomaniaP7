@@ -11,11 +11,11 @@ const apiClient = axios.create({//Base URL for all calls
   })
 
 export default {
-  postSignin() { // new post request
-    return apiClient.post("/signin")
+  postSignin(data) { // new post request
+    return apiClient.post("/auth/signin", data)
   },
 
-  postLogin() { // new post request
-    return apiClient.post("/login")
+  postLogin(data) { // new post request
+    return apiClient.post("/auth/login", data)
   }
 };

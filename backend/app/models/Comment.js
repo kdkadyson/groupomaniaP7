@@ -6,8 +6,7 @@ const Comment = function(comment){
     this.photo = comment.photo;
     this.title = comment.title;
     this.img = comment.img;
-    this.description = comment.description;
-    this.dateTime = comment.dateTime;  
+    this.description = comment.description;  
 };
 
 Comment.create = (newComment, result) => {

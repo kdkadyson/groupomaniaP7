@@ -10,7 +10,6 @@ const sequelize = new Sequelize(
   {
     host: config.HOST,
     dialect: config.dialect,
-    operatorsAliases: false,
   }
 );
 
@@ -20,7 +19,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.user = require("../models/User.js")(sequelize, Sequelize);
-db.role = require("../models/Role.js")(sequelize, Sequelize);
+db.role = require("../models/Role.js")(sequelize, Sequelize); 
 
 db.role.belongsToMany(db.user, {
     through: "user_roles",

@@ -11,11 +11,11 @@
 
 <form @submit.prevent="signin"> 
 
-  <label for="name">Nom:</label>
+  <label for="username">Nom:</label>
     <input
-      v-model="name"
+      v-model="username"
       type="text"
-      name="name"
+      name="username"
       placeholder="Nom"
       value
     >
@@ -58,7 +58,7 @@
 export default{
   data () {
     return {
-      name: '',
+      username: '',
       email: '',
       password: '',
       errors: null
@@ -67,12 +67,12 @@ export default{
   methods: {
     signin () {
       this.$store.dispatch("signin", {
-        name: this.name,
+        username: this.username,
         email: this.email,
         password: this.password
       })
       .then( () =>{
-        this.$router.push({ name: "ProfileCreate" })
+        this.$router.push({ username: "ProfileCreate" })
       })
       .catch(err => {
         this.errors = err.response.data.errors

@@ -19,7 +19,7 @@ exports.signin = (req, res) => {
             if (req.body.roles){
                 Role.findAll({
                     where: {
-                        name: {
+                        username: {
                             [Op.or]: req.body.roles 
                         }
                     }
@@ -39,11 +39,11 @@ exports.signin = (req, res) => {
         });
 }
 
-//Find username in database (if exists)
+//Find email in database (if exists)
 exports.login = (req, res) => {
     User.findOne({
         where: {
-          username: req.body.username
+          email: req.body.email
         }
     })
         .then(user => {
