@@ -11,6 +11,7 @@ import ProfileDetails from "@/views/ProfileDetails.vue";
 import ProfileCreate from "@/views/ProfileCreate.vue";
 import ErrorDisplay from "@/views/ErrorDisplay.vue";
 
+
 const routes = [
  {
     path: "/",
@@ -67,7 +68,7 @@ const routes = [
   {
     path: "/user",
     name: "user",
-      // lazy-loaded
+    // lazy-loaded//
     //component: () => import("./views/BoardUser.vue")
   },
   {

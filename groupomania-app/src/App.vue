@@ -7,6 +7,13 @@
     <Accueil/>
     <router-view/>
   </div>
+
+  <div>
+    <h3>{{content}}</h3>
+  </div> 
+
+  
+
   
   <footer>
     <p> FOOTER </p>
