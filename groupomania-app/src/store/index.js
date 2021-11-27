@@ -1,13 +1,18 @@
+//Vuex Store that contains all modules
+
 import { createStore } from "vuex";
 import UserService from "@/services/UserService.js";
 import CommentService from "@/services/CommentService.js";
 import ProfileService from "@/services/ProfileService.js";
 
 import axios from "axios";
+//import Vue from 'vue';
+//import Vuex from 'vuex';
+//import { auth } from "./auth.js";
 
+//Vue.use(Vuex);
 
-
-export default createStore({
+export default createStore;({
   state: {
     user: null, // new user
     comments: [], // new comments array
@@ -154,5 +159,13 @@ export default createStore({
 
 
   modules: {
+   
   }
-})
+});
+
+/*export default new Vuex.Store({
+  modules: {
+    auth
+  }*/
+
+

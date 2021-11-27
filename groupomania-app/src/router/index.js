@@ -9,7 +9,6 @@ import CommentCreate from "@/views/CommentCreate.vue"
 import Staff from "@/views/Staff.vue"
 import ProfileDetails from "@/views/ProfileDetails.vue"
 import ProfileCreate from "@/views/ProfileCreate.vue"
-import Profile from "@/views/Profile.vue"
 import ErrorDisplay from '@/views/ErrorDisplay.vue'
 
 const routes = [
@@ -66,12 +65,6 @@ const routes = [
     component: ProfileCreate
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile
-    //meta: {requiresAuth : true}//when logout
-  },
-  {
     path: '/error/:error',
     name: 'ErrorDisplay',
     props: true,
@@ -83,6 +76,9 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
+
+
+//meta: {requiresAuth : true}//when logout
 
 //router.beforeEach((to, from, next) => {
   //const loggedIn = localStorage.getItem("user")

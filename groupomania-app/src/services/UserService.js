@@ -1,21 +1,19 @@
-// API AXIOS INSTANCE (apiClient)
-import axios from "axios"
+import axios from "axios";
+import authHeader from "./Auth-header";
 
-const apiClient = axios.create({//Base URL for all calls
-    baseURL: "http://localhost:3000/api",
-    withCredentials: true,
-    headers: {//for Authentification and Config.
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    }
-  })
+const apiClient = "http://localhost:3000/api/test";
 
-export default {
-  postSignin(data) { // new post request
-    return apiClient.post("/auth/signin", data)
-  },
-
-  postLogin(data) { // new post request
-    return apiClient.post("/auth/login", data)
+//Service to acces User data
+class UserService {
+  getPublicContent() {
+    return axios.get(apiClient + "all");
   }
-};
+  getUserBoard() {
+    return axios.get(apiClient + "user", { headers: authHeader() });
+  }
+  getAdminBoard() {
+    return axios.get(apiClient + "admin", { headers: authHeader() });
+  }
+}
+
+export default new UserService();
