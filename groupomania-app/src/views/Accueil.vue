@@ -7,19 +7,20 @@
         <router-link :to="{ name: 'CommentList' }">Comments</router-link>
         <router-link :to="{ name: 'CommentCreate' }">Create Comment</router-link>
         <router-link :to="{ name: 'Staff' }">Profile</router-link>
-        
-        
-      </div> 
+         
 
-    <div class="accueil">
-    <AccueilMessage/>
-    </div>
+        <div class="accueil">
+        <AccueilMessage/>
+        </div>
+        <h3>{{content}}</h3>
+      </div> 
 
 </template>
 
 <script>
 // @ is an alias to /srcz
 import AccueilMessage from "@/components/AccueilMessage.vue";
+import UserService from '../services/UserService.js';
 
 export default {
   name: "Accueil",
@@ -27,25 +28,25 @@ export default {
     AccueilMessage
   },
 
-  computed: {
-    currentUser() {
-      return this.$store.state.auth.user;
-    },
-    showAdminBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes("ROLE_ADMIN");
-      }
-      return false;
-    },
-      
+  data() {
+    return {
+      content: " "
+    };
   },
 
-  methods: {
-    logOut() {
-      this.$store.dispatch("auth/logout");
-      this.$router.push("/login");
-    }
-  }
+  mounted() {
+    UserService.getPublicContent().then(
+      response => {
+        this.content = response.data;
+      },
+      error => {
+        this.content =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+      }
+    );
+  }  
 }
 
 </script>

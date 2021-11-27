@@ -3,13 +3,13 @@
 <template>
   <div class="container">
     <header class="admin-board">
-      <h3>{{content}}</h3>
+      <h1>{{content}}</h1>
     </header>
   </div>
 </template>
 
 <script>
-import UserService from "../services/userService";
+import UserService from "../services/UserService.js";
 
 export default {
   name: "User",
