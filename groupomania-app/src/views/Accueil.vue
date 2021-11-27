@@ -1,12 +1,14 @@
 <template>
 
-      <div id="nav">
+      <div id="app">
         <router-link :to="{ name: 'Login' }">Login</router-link> 
         <router-link :to="{ name: 'Signin' }">Signin</router-link>
         <router-link :to="{ name: 'Notif' }">Notif</router-link>
         <router-link :to="{ name: 'CommentList' }">Comments</router-link>
         <router-link :to="{ name: 'CommentCreate' }">Create Comment</router-link>
-        <router-link :to="{ name: 'Staff' }">Collègues</router-link>
+        <router-link :to="{ name: 'Staff' }">Profile</router-link>
+        
+        
       </div> 
 
     <div class="accueil">
@@ -23,6 +25,26 @@ export default {
   name: "Accueil",
   components: {
     AccueilMessage
+  },
+
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    },
+    showAdminBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        return this.currentUser.roles.includes("ROLE_ADMIN");
+      }
+      return false;
+    },
+      
+  },
+
+  methods: {
+    logOut() {
+      this.$store.dispatch("auth/logout");
+      this.$router.push("/login");
+    }
   }
 }
 

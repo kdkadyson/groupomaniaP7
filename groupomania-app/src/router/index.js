@@ -1,15 +1,15 @@
-import { createRouter, createWebHistory } from "vue-router"
-import Accueil from "@/views/Accueil.vue"
-import Login from "@/views/Login.vue"
-import Signin from "@/views/Signin.vue"
-import Notif from "@/views/Notif.vue"
-import CommentList from "@/views/CommentList.vue"
-import CommentDetails from "@/views/CommentDetails.vue"
-import CommentCreate from "@/views/CommentCreate.vue"
-import Staff from "@/views/Staff.vue"
-import ProfileDetails from "@/views/ProfileDetails.vue"
-import ProfileCreate from "@/views/ProfileCreate.vue"
-import ErrorDisplay from '@/views/ErrorDisplay.vue'
+import { createRouter, createWebHistory } from "vue-router";
+
+import Accueil from "@/views/Accueil.vue";
+import Login from "@/views/Login.vue";
+import Signin from "@/views/Signin.vue";
+import CommentList from "@/views/CommentList.vue";
+import CommentDetails from "@/views/CommentDetails.vue";
+import CommentCreate from "@/views/CommentCreate.vue";
+import Staff from "@/views/Staff.vue";
+import ProfileDetails from "@/views/ProfileDetails.vue";
+import ProfileCreate from "@/views/ProfileCreate.vue";
+import ErrorDisplay from "@/views/ErrorDisplay.vue";
 
 const routes = [
  {
@@ -46,7 +46,7 @@ const routes = [
   {
     path: "/notif",
     name: "Notif",
-    component: Notif
+  //component: () => import("./views/Notif.vue") 
   },
   {
     path: "/profiles",
@@ -65,8 +65,19 @@ const routes = [
     component: ProfileCreate
   },
   {
-    path: '/error/:error',
-    name: 'ErrorDisplay',
+    path: "/user",
+    name: "user",
+      // lazy-loaded
+    //component: () => import("./views/BoardUser.vue")
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    //component: () => import("./views/BoardAdmin.vue")
+  },
+  {
+    path: "/error/:error",
+    name: "ErrorDisplay",
     props: true,
     component: ErrorDisplay
   } 
@@ -80,13 +91,18 @@ const router = createRouter({
 
 //meta: {requiresAuth : true}//when logout
 
-//router.beforeEach((to, from, next) => {
-  //const loggedIn = localStorage.getItem("user")
+router.beforeEach((to, from, next) => {
+  const publicPages = ["/login", "/signin", "/accueil"];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem("user")
 
-  //if(to.matched.some(record => record.meta.requiresAuth) && !loggedIn){
-    //next("/")//redirect to home
-  //}
-  //next()//continues navigation 
-//});
+  // trying to access a restricted page + not logged in
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    next("/login");
+  } else {
+    next();
+  }
+}); 
 
 export default router

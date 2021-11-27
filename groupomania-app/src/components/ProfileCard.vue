@@ -3,6 +3,8 @@
   <router-link class="profile-link" :to="{ name: 'ProfileDetails', params: {id: profile.id} }">
     <div class="profile-card">
         <p> {{ profile.photo }} {{ profile.name }}</p>
+        <p> {{ profile.description }} </p>
+        <!--<p> v-for="(role,index) in currentUser.roles" :key="index">{{role}} </p>-->
     </div>
   </router-link>
 
