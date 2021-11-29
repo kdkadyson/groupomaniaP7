@@ -85,7 +85,7 @@ export default{
         }
         //Dispatch Auth/login action to Vuex store
         if (this.user.email && this.user.password) {
-          this.$store.dispatch('auth/login', this.user).then(
+          this.$store.dispatch('/api/auth/login', this.user).then(
             () => {//If login ok => Redirect to :
               this.$router.push({ name: "CommentList" });
             },

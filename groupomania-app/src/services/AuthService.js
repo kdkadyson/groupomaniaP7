@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:8080/api/auth/";
+const apiClient = "http://localhost:8080/api/auth/";
 
 //POST login/Save jwt to LS
 class AuthService {
     login(user) {
         return axios
-            .post(apiUrl + "login", {
+            .post(apiClient + "login", {
                 email: user.email,
                 password: user.password
             })
@@ -20,7 +20,7 @@ class AuthService {
 
     signin(user) {
         return axios
-            .post(apiUrl + "signin", {
+            .post(apiClient + "signin", {
                 username: user.username,
                 email: user.email,
                 password: user.password

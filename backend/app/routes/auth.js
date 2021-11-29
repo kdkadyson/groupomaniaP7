@@ -11,17 +11,7 @@ module.exports = function(app){
         );
         next();
     });
-
-    /* export default function authHeader() {
-  let user = JSON.parse(localStorage.getItem('user'));
-
-  if (user && user.accessToken) {
-    // for Node.js Express back-end
-    return { 'x-access-token': user.accessToken };
-  } else {
-    return {};
-  }
-} */ 
+ 
 
     //Authentication => POST SIGNIN
     app.post(
@@ -36,3 +26,14 @@ module.exports = function(app){
     //Authentication => POST LOGIN
     app.post("/api/auth/login", controller.login);
 };
+
+export default function authHeader() {
+  let user = JSON.parse(localStorage.getItem('user'));
+
+  if (user && user.accessToken) {
+    // for Node.js Express back-end //
+    return { 'x-access-token': user.accessToken };
+  } else {
+    return {};
+  }
+}
